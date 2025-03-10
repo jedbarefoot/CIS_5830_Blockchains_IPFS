@@ -13,7 +13,7 @@ def pin_to_ipfs(data):
 		}
 
 	response = requests.post(url, headers=headers, files=files)
-	cid = response.json().get("data", {}).get("cid")
+	cid = response_data.get("IpfsHash")
 
 	return cid
 
