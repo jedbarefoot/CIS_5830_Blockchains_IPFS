@@ -15,7 +15,9 @@ def pin_to_ipfs(data):
 
 	cid = response.json().get("IpfsHash")
 
-	return cid
+	print(str(cid))
+
+	return str(cid)
 
 def get_from_ipfs(cid,content_type="json"):
 	assert isinstance(cid,str), f"get_from_ipfs accepts a cid in the form of a string"
@@ -24,6 +26,8 @@ def get_from_ipfs(cid,content_type="json"):
 	response = requests.get(url)
 
 	data = response.json()
+
+	print(data)
 
 	assert isinstance(data,dict), f"get_from_ipfs should return a dict"
 	return data
