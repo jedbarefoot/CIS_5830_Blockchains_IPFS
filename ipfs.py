@@ -6,13 +6,13 @@ def pin_to_ipfs(data):
 	#YOUR CODE HERE
 	json_data = json.dumps(data)
 	url = "https://api.pinata.cloud/pinning/pinJSONToIPFS"
-	files = {"file": ("data.json", json_data)}
 	headers = {
-        "pinata_api_key": "c1245bd2149589bc3cef",
-        "pinata_secret_api_key": "843acb236bf5c8e7a5213cb1a8cb7b29d38f6e731deaf526427ad37c3a92ec00"
-		}
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiIxNjUxYmY1Yi1kZjQzLTQyZjMtODkwYy01NmZjOGIwM2VmNjkiLCJlbWFpbCI6ImplZGJhcmVmb290QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwaW5fcG9saWN5Ijp7InJlZ2lvbnMiOlt7ImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxLCJpZCI6IkZSQTEifSx7ImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxLCJpZCI6Ik5ZQzEifV0sInZlcnNpb24iOjF9LCJtZmFfZW5hYmxlZCI6ZmFsc2UsInN0YXR1cyI6IkFDVElWRSJ9LCJhdXRoZW50aWNhdGlvblR5cGUiOiJzY29wZWRLZXkiLCJzY29wZWRLZXlLZXkiOiJjMTI0NWJkMjE0OTU4OWJjM2NlZiIsInNjb3BlZEtleVNlY3JldCI6Ijg0M2FjYjIzNmJmNWM4ZTdhNTIxM2NiMWE4Y2I3YjI5ZDM4ZjZlNzMxZGVhZjUyNjQyN2FkMzdjM2E5MmVjMDAiLCJleHAiOjE3NzMxNjgzMTR9.LwD_DMXnyGxsA_RwDCoX_t6aS_6aygxt1sSCRzeBzz",
+		"Content-Type": "application/json"
+    }
 
-	response = requests.post(url, headers=headers, files=files)
+	response = requests.post(url, headers=headers, files=json_data)
+
 	cid = response.json().get("IpfsHash")
 
 	return cid
