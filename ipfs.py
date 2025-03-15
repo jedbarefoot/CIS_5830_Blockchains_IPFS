@@ -11,7 +11,7 @@ def pin_to_ipfs(data):
 		"Content-Type": "application/json"
     }
 
-	response = requests.post(url, headers=headers, data=data)
+	response = requests.post(url, headers=headers, json=data)
 
 	cid = response.json().get("IpfsHash")
 
@@ -22,7 +22,7 @@ def pin_to_ipfs(data):
 def get_from_ipfs(cid,content_type="json"):
 	assert isinstance(cid,str), f"get_from_ipfs accepts a cid in the form of a string"
 	#YOUR CODE HERE	
-	url = "https://gateway.pinata.cloud/ipfs/{cid}"
+	url = f"https://gateway.pinata.cloud/ipfs/{cid}"
 	response = requests.get(url)
 
 	data = response.json()
