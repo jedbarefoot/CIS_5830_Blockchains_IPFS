@@ -26,7 +26,6 @@ def get_from_ipfs(cid,content_type="json"):
 	response = requests.get(url)
 
 	data = response.json()
-	data = json.load(data)
 
 	print(data)
 
