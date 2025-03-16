@@ -8,8 +8,7 @@ JWT = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiIx
 def pin_to_ipfs(data):
 	assert isinstance(data,dict), f"Error pin_to_ipfs expects a dictionary"
 	#YOUR CODE HERE
-	
-	json_data = json.dumps(data)
+
 	url = "https://api.pinata.cloud/pinning/pinJSONToIPFS"
 	headers = {
     	"pinata_api_key": API_KEY,
@@ -17,7 +16,7 @@ def pin_to_ipfs(data):
     	"Content-Type": "application/json"
 	}
 
-	response = requests.post(url, headers=headers, json=json_data)
+	response = requests.post(url, headers=headers, json=data)
 
 	print(response)
 
